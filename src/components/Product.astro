@@ -1,0 +1,21 @@
+---
+import { products } from '../data/site';
+interface Props { id: string; }
+const p = products[Astro.props.id];
+---
+<section class="product" id={`produkt-${Astro.props.id}`}>
+  <div class="product-label">Vores eget produkt</div>
+  <div class="product-body">
+    <img src={p.img} alt={p.name} loading="lazy" width="600" height="600" />
+    <div class="product-info">
+      <span class="product-name">{p.name} fra MakeIt</span>
+      <p>{p.desc}</p>
+      <ul>{p.points.map((pt) => <li>{pt}</li>)}</ul>
+      <p><strong>Ikke det rigtige valg, hvis:</strong> {p.notFor}</p>
+      <div class="product-cta">
+        <span class="price">{p.price} kr</span>
+        <a class="btn" href={p.url} rel="noopener">Se {p.name} hos MakeIt</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'trisse', label: 'Trissens højde' }, { id: 'tilbehoer', label: 'Håndtag og manchetter' },
+  { id: 'placering', label: 'Hvor du står' }, { id: 'sikkerhed', label: 'Tjek før du starter' }, { id: 'produkt-karabin', label: 'Vores eget produkt' },
+];
+const summary = [
+  'Trissens højde bestemmer, hvilken retning kablet trækker – og dermed hvilken muskel der arbejder.',
+  'Vælg tilbehør efter øvelsen: håndtag, reb, stang eller manchet.',
+  'Stå så langt fra maskinen, at vægtene ikke slår ned i stablen i bunden af bevægelsen.',
+  'Tjek altid karabin, kabel og stift, før du lægger vægt på.',
+];
+---
+<Article slug="kabeltraening/kabelmaskine-opsaetning" toc={toc} summary={summary} foto="Kabelmaskine med trisse i forskellige højder">
+  <section id="trisse">
+    <h2>Trissens højde</h2>
+    <p>Kablet trækker altid i en lige linje fra trissen. Derfor skal trissen stå, så kablet trækker imod den bevægelse, du vil træne.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Trissehøjde</th><th>Eksempler på øvelser</th></tr></thead>
+      <tbody>
+        <tr><td>Nederst</td><td>Kickbacks, hofteabduktion, curls, sidehæv</td></tr>
+        <tr><td>Midt</td><td>Roning, pallof press, brystflyes</td></tr>
+        <tr><td>Øverst</td><td>Pulldown, triceps pushdown, face pulls</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section id="tilbehoer">
+    <h2>Håndtag og manchetter</h2>
+    <ul>
+      <li><strong>Enkelthåndtag:</strong> til øvelser med én arm, fx roning og sidehæv.</li>
+      <li><strong>Reb:</strong> til triceps pushdown og face pulls, hvor hænderne skal kunne skilles ad.</li>
+      <li><strong>Lige eller buet stang:</strong> til pulldown, curls og pushdowns med begge hænder.</li>
+      <li><strong>Manchet:</strong> om anklen til <a href="/kabeltraening/kabelmanchetter-oevelser/">benøvelser</a> eller om håndleddet, når du ikke vil holde i et håndtag.</li>
+    </ul>
+  </section>
+  <section id="placering">
+    <h2>Hvor du står</h2>
+    <p>Stå så langt fra maskinen, at der stadig er spænding i kablet, når du er tilbage i startpositionen. Slår vægtene ned i stablen mellem gentagelserne, står du for tæt. Hold fast i maskinen med den frie hånd i benøvelser, så du står stabilt.</p>
+    <Ph foto="Korrekt afstand til kabelmaskinen" ratio="16 / 9" />
+  </section>
+  <section id="sikkerhed">
+    <h2>Tjek før du starter</h2>
+    <ol>
+      <li>Stiften i vægtstablen sidder helt inde.</li>
+      <li>Karabinen er lukket og sidder i kablets øje.</li>
+      <li>Kablet er helt og ikke flosset.</li>
+      <li>Start let, og øg vægten, når bevægelsen sidder.</li>
+    </ol>
+  </section>
+  <Product id="karabin" />
+</Article>

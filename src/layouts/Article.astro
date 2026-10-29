@@ -1,0 +1,93 @@
+---
+import Base from './Base.astro';
+import Ph from '../components/Ph.astro';
+import { articleBySlug, catBySlug, memberById, articles, DATO } from '../data/site';
+interface Props {
+  slug: string;
+  toc: { id: string; label: string }[];
+  summary: string[];
+  sources?: { label: string; url: string }[];
+  foto: string;
+}
+const { slug, toc, summary, sources = [], foto } = Astro.props;
+const a = articleBySlug(slug);
+const cat = catBySlug(a.cat);
+const author = memberById(a.author);
+const reviewer = memberById(a.reviewer);
+const sameCat = articles.filter((x) => x.cat === a.cat && x.slug !== slug);
+const others = articles.filter((x) => x.cat !== a.cat && x.slug !== slug);
+const related = [...sameCat, ...others].slice(0, 3);
+const ld = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.excerpt, inLanguage: 'da-DK',
+  dateModified: '2026-10-29', datePublished: '2026-10-29',
+  publisher: { '@type': 'Organization', name: 'MakeIt Danmark ApS', url: 'https://www.nowmakeit.eu' },
+};
+---
+<Base title={`${a.title} – Styrkeviden`} description={a.excerpt} active={a.cat}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Brødkrumme">
+      <a href="/">Forside</a><span aria-hidden="true">/</span><a href={`/${cat.slug}/`}>{cat.name}</a><span aria-hidden="true">/</span><span>{a.title}</span>
+    </nav>
+    <div class="page-head">
+      <span class="eyebrow">{cat.name}</span>
+      <h1>{a.title}</h1>
+      <p class="lead">{a.excerpt}</p>
+      <div class="byline">
+        <span><span class="mini"></span>Af <a href={`/fagpanel/#${author.id}`}><strong>[FAGPERSON]</strong></a>, {author.title.toLowerCase()}</span>
+        <span>Fagligt gennemgået af <a href={`/fagpanel/#${reviewer.id}`}><strong>[FAGPERSON]</strong></a>, {reviewer.title.toLowerCase()}</span>
+        <span>Opdateret {DATO} · <a href="#log">se ændringer</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap article-grid">
+    <article class="article-main">
+      <div class="notice">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9.5" stroke="#51689b" stroke-width="2" fill="none"></circle><path d="M12 11v6M12 7.5v.5" stroke="#51689b" stroke-width="2.2" stroke-linecap="round"></path></svg>
+        <span><strong>Hvem står bag:</strong> Styrkeviden udgives af MakeIt Danmark ApS, som selv producerer træningsudstyr. Når vi nævner MakeIt-produkter, er de markeret som vores egne – og vi skriver det, når noget andet passer bedre. <a href="/om-os/">Læs mere om ejerskab</a></span>
+      </div>
+      <Ph foto={foto} ratio="16 / 8" />
+      <section class="box">
+        <h2>Kort fortalt</h2>
+        <ul>{summary.map((s) => <li set:html={s} />)}</ul>
+      </section>
+      <slot />
+      {sources.length > 0 && (
+        <section id="kilder">
+          <h2 style="font-size:24px">Kilder</h2>
+          <ul>{sources.map((s) => <li><a href={s.url} rel="noopener">{s.label}</a></li>)}</ul>
+        </section>
+      )}
+      <section id="log" class="box">
+        <h2>Opdateringslog</h2>
+        <p style="font-size:15px"><strong>{DATO}:</strong> Guiden er udgivet.</p>
+      </section>
+      <div class="author-box">
+        <div class="avatar"></div>
+        <div>
+          <strong style="font-family:var(--head);font-size:19px">[FAGPERSON], {author.title.toLowerCase()}</strong>
+          <span style="color:var(--muted)">{author.role} Skriver for Styrkeviden mod honorar fra MakeIt.</span>
+          <a href={`/fagpanel/#${author.id}`} style="font-weight:600">Se fagpanelet</a>
+        </div>
+      </div>
+    </article>
+    <aside class="aside">
+      <nav class="aside-card" aria-label="Indhold">
+        <span class="aside-title">Indhold</span>
+        {toc.map((t) => <a href={`#${t.id}`}>{t.label}</a>)}
+      </nav>
+      <div class="aside-card">
+        <span class="eyebrow">Fagligt gennemgået</span>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="avatar" style="width:48px;height:48px"></div>
+          <div><a href={`/fagpanel/#${reviewer.id}`} class="person-name">[FAGPERSON]</a><span class="person-title">{reviewer.title}</span></div>
+        </div>
+        <span style="color:var(--muted);font-size:14px">Har gennemgået guiden for faglig korrekthed {DATO}.</span>
+      </div>
+      <div class="aside-card aside-accent">
+        <span class="aside-title">Læs også</span>
+        {related.map((r) => <a href={`/${r.slug}/`}>{r.title}</a>)}
+      </div>
+    </aside>
+  </div>
+</Base>

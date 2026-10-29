@@ -1,0 +1,62 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'opsaetning', label: 'Før du starter' }, { id: 'oevelser', label: 'De 8 øvelser' },
+  { id: 'program', label: 'Et træningspas' }, { id: 'produkt-hookit', label: 'Vores eget produkt' }, { id: 'faq', label: 'Spørgsmål og svar' },
+];
+const summary = [
+  'Med en manchet om anklen kan du træne baller, hofte og baglår i alle retninger på kabelmaskinen.',
+  'Sæt trissen helt nederst, og hold fast i maskinen med hænderne for at stå stabilt.',
+  'Vælg 3–4 øvelser pr. træningspas, 2–3 sæt à 10–15 gentagelser pr. ben.',
+  'Bevæg benet roligt og kontrolleret – det er musklen, ikke farten, der skal flytte vægten.',
+];
+const sources = [{ label: 'MakeIt – HookIt Cuffs (producentdata)', url: 'https://www.nowmakeit.eu/products/hookit-sort' }];
+const ex = [
+  ['Glute kickback', 'Stå med front mod maskinen. Spark benet lige bagud med let bøjet knæ, til hoften er strakt. Træner især ballerne.'],
+  ['Stående hofteabduktion', 'Stå med siden til maskinen, manchet på det yderste ben. Før benet ud til siden. Træner den lille ballemuskel og ydersiden af hoften.'],
+  ['Stående hofteadduktion', 'Stå med siden til maskinen, manchet på det inderste ben. Før benet ind foran det andet ben. Træner indersiden af låret.'],
+  ['Stående hamstring curl', 'Stå med front mod maskinen. Bøj knæet, så hælen føres op mod ballen, uden at låret flytter sig. Træner baglåret.'],
+  ['Hofteekstension med strakt ben', 'Som kickback, men med strakt ben og en lidt fremoverbøjet overkrop. Træner baller og baglår sammen.'],
+  ['Diagonal kickback', 'Spark benet bagud og lidt ud til siden i en 45-graders vinkel. Rammer ballen fra en anden vinkel end almindelig kickback.'],
+  ['Hoftefleksion', 'Stå med ryggen til maskinen. Løft knæet frem og op til hoftehøjde. Træner hoftebøjerne foran på hoften.'],
+  ['Kickback på alle fire', 'Gå ned på alle fire med siden til maskinen og manchetten om anklen. Pres foden bagud og op. Holder ryggen mere stabil end i stående udgaver.'],
+];
+---
+<Article slug="kabeltraening/kabelmanchetter-oevelser" toc={toc} summary={summary} sources={sources} foto="Glute kickback med manchet på kabelmaskine">
+  <section id="opsaetning">
+    <h2>Før du starter</h2>
+    <p>Sæt trissen helt nederst, og fastgør manchetten til kablet med en karabinhage. Spænd manchetten om anklen, så den sidder tæt uden at klemme. Stå så langt fra maskinen, at vægten ikke rammer stablen i bunden af bevægelsen, og hold fast i maskinen med begge hænder. Læs mere i guiden til at <a href="/kabeltraening/kabelmaskine-opsaetning/">stille kabelmaskinen op</a>.</p>
+  </section>
+  <section id="oevelser">
+    <h2>De 8 øvelser</h2>
+    {ex.map(([name, text], i) => (
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-items:center">
+        <Ph foto={`Øvelse ${i + 1}: ${name}`} ratio="4 / 3" />
+        <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0">{i + 1}. {name}</h3><p>{text}</p></div>
+      </div>
+    ))}
+  </section>
+  <section id="program">
+    <h2>Et træningspas med manchetter</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Øvelse</th><th>Sæt</th><th>Gentagelser pr. ben</th></tr></thead>
+      <tbody>
+        <tr><td>Glute kickback</td><td>3</td><td>12–15</td></tr>
+        <tr><td>Stående hofteabduktion</td><td>3</td><td>12–15</td></tr>
+        <tr><td>Stående hamstring curl</td><td>2</td><td>10–12</td></tr>
+        <tr><td>Diagonal kickback</td><td>2</td><td>12–15</td></tr>
+      </tbody>
+    </table></div>
+    <p>Kør passet efter dine tunge benøvelser, fx squat eller dødløft, eller som et selvstændigt pas 1–2 gange om ugen. Når du kan tage den øverste ende af gentagelserne i alle sæt, så sæt vægten op.</p>
+  </section>
+  <Product id="hookit" />
+  <p>Har kabelmaskinen ikke en karabin, du kan hægte manchetten på, kan du bruge en <a href="https://www.nowmakeit.eu/products/makeit-karabinhage" rel="noopener">MakeIt Karabinhage</a> (99 kr).</p>
+  <section id="faq" class="faq">
+    <h2>Ofte stillede spørgsmål</h2>
+    <details><summary>Skal manchetten sidde om anklen eller over knæet?</summary><p>Til øvelserne her sidder den om anklen. Det giver den længste vægtstang og den største belastning på hoften.</p></details>
+    <details><summary>Hvorfor svinger jeg med kroppen?</summary><p>Vægten er sandsynligvis for tung. Sæt den ned, og hold overkroppen stille, så det kun er benet, der bevæger sig.</p></details>
+    <details><summary>Kan manchetterne også bruges til arme?</summary><p>Ja. Om håndleddet kan de bruges til fx sidehæv for skuldrene og curls, hvor du ikke vil holde om et håndtag.</p></details>
+  </section>
+</Article>

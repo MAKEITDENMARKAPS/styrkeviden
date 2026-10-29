@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { categories, articlesIn } from '../data/site';
+---
+<Base title="Alle emner – Styrkeviden" description="Alle guides på Styrkeviden, samlet efter emne.">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Brødkrumme"><a href="/">Forside</a><span aria-hidden="true">/</span><span>Emner</span></nav>
+    <div class="page-head"><h1>Alle emner</h1><p class="lead">Alle guides på Styrkeviden, samlet efter emne.</p></div>
+    <div class="grid grid-cats" style="padding:24px 0 72px">
+      {categories.map((c) => (
+        <div class="card">
+          <a href={`/${c.slug}/`} class="card-title">{c.name}</a>
+          <span class="card-text">{c.desc}</span>
+          <ul style="margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px">
+            {articlesIn(c.slug).map((a) => <li><a href={`/${a.slug}/`}>{a.title}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</Base>

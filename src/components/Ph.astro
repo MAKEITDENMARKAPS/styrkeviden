@@ -1,0 +1,5 @@
+---
+interface Props { foto: string; ratio?: string; }
+const { foto, ratio = '16 / 10' } = Astro.props;
+---
+<div class="ph" style={`aspect-ratio: ${ratio}`} data-foto={foto} aria-hidden="true"></div>

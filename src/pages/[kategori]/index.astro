@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import Ph from '../../components/Ph.astro';
+import { categories, articlesIn, memberById } from '../../data/site';
+export function getStaticPaths() {
+  return categories.map((c) => ({ params: { kategori: c.slug }, props: { cat: c } }));
+}
+const { cat } = Astro.props;
+const list = articlesIn(cat.slug);
+const others = categories.filter((c) => c.slug !== cat.slug);
+---
+<Base title={`${cat.name} – Styrkeviden`} description={cat.intro} active={cat.slug}>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Brødkrumme"><a href="/">Forside</a><span aria-hidden="true">/</span><a href="/emner/">Emner</a><span aria-hidden="true">/</span><span>{cat.name}</span></nav>
+    <div class="page-head">
+      <h1>{cat.name}</h1>
+      <p class="lead">{cat.intro}</p>
+    </div>
+    <div class="grid grid-guides" style="padding:24px 0 64px">
+      {list.map((g) => (
+        <a href={`/${g.slug}/`} class="guide">
+          <Ph foto={g.title} />
+          <span class="guide-title">{g.title}</span>
+          <span class="card-text">{g.excerpt}</span>
+          <span class="guide-meta">Af [FAGPERSON], {memberById(g.author).title.toLowerCase()}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+  <section class="section section-white">
+    <div class="wrap">
+      <div class="section-head"><h2>Andre emner</h2></div>
+      <div class="grid grid-cats">
+        {others.map((c) => (
+          <a href={`/${c.slug}/`} class="card"><span class="card-title">{c.name}</span><span class="card-text">{c.desc}</span></a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

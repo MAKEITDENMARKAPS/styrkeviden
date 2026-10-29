@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import { team, articles } from '../data/site';
+---
+<Base title="Fagpanelet – Styrkeviden" description="De fagpersoner, der skriver og gennemgår guiderne på Styrkeviden.">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Brødkrumme"><a href="/">Forside</a><span aria-hidden="true">/</span><span>Fagpanelet</span></nav>
+    <div class="page-head">
+      <h1>Fagpanelet</h1>
+      <p class="lead">Alle guides på Styrkeviden skrives eller gennemgås af en fagperson. Skribenterne honoreres af MakeIt Danmark ApS for deres arbejde, men vurderer selv det faglige indhold.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;padding:24px 0 72px;max-width:900px">
+      {team.map((t) => {
+        const wrote = articles.filter((a) => a.author === t.id);
+        const reviewed = articles.filter((a) => a.reviewer === t.id);
+        return (
+          <section id={t.id} class="author-box" style="scroll-margin-top:24px">
+            <div class="avatar"></div>
+            <div>
+              <h2 style="margin:0;font-size:22px">[FAGPERSON]</h2>
+              <span class="person-title" style="font-size:15px">{t.title}</span>
+              <p style="margin:4px 0 0">{t.role}</p>
+              {wrote.length > 0 && (<><strong style="margin-top:8px">Har skrevet</strong><ul style="margin:0;padding-left:20px">{wrote.map((a) => <li><a href={`/${a.slug}/`}>{a.title}</a></li>)}</ul></>)}
+              {reviewed.length > 0 && (<><strong style="margin-top:8px">Har gennemgået</strong><ul style="margin:0;padding-left:20px">{reviewed.map((a) => <li><a href={`/${a.slug}/`}>{a.title}</a></li>)}</ul></>)}
+            </div>
+          </section>
+        );
+      })}
+      <p>Er du fysioterapeut, træner eller læge og vil skrive for Styrkeviden? <a href="/kontakt/">Kontakt os</a>.</p>
+    </div>
+  </div>
+</Base>

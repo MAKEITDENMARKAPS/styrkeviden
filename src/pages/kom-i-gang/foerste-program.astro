@@ -1,0 +1,64 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'hvor-ofte', label: 'Hvor ofte' }, { id: 'program', label: 'Programmet' },
+  { id: 'fremgang', label: 'Sådan gør du fremskridt' }, { id: 'fejl', label: 'Begynderfejl' },
+];
+const summary = [
+  'Sundhedsstyrelsen anbefaler voksne at lave muskelstyrkende aktivitet mindst to gange om ugen.',
+  'Et helkropsprogram med to træningspas, A og B, som du skifter imellem, er en god start.',
+  'Øg vægten lidt, når du kan tage alle gentagelser med god teknik.',
+  'Lær teknikken med lette vægte, før du jagter tunge løft.',
+];
+const sources = [
+  { label: 'Sundhedsstyrelsen – Anbefalinger om fysisk aktivitet', url: 'https://www.sst.dk/da/Viden/Fysisk-aktivitet/Anbefalinger-om-fysisk-aktivitet' },
+  { label: 'WHO – Guidelines on physical activity and sedentary behaviour (2020)', url: 'https://www.who.int/publications/i/item/9789240015128' },
+];
+---
+<Article slug="kom-i-gang/foerste-program" toc={toc} summary={summary} sources={sources} foto="Begynder ved squatstativet i et fitnesscenter">
+  <section id="hvor-ofte">
+    <h2>Hvor ofte skal du træne?</h2>
+    <p>Både Sundhedsstyrelsen og WHO anbefaler, at voksne laver muskelstyrkende aktivitet mindst to dage om ugen. To til tre træningspas om ugen med en hviledag imellem er et godt udgangspunkt.</p>
+  </section>
+  <section id="program">
+    <h2>Programmet</h2>
+    <p>Skift mellem pas A og pas B. Træner du tre gange om ugen, bliver det A–B–A den ene uge og B–A–B den næste.</p>
+    <h3>Pas A</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Øvelse</th><th>Sæt</th><th>Gentagelser</th></tr></thead>
+      <tbody>
+        <tr><td>Squat eller benpres</td><td>3</td><td>8–10</td></tr>
+        <tr><td>Bænkpres eller armstrækninger</td><td>3</td><td>8–10</td></tr>
+        <tr><td><a href="/teknik/rows/">Kabelroning</a></td><td>3</td><td>10–12</td></tr>
+        <tr><td>Planke</td><td>3</td><td>20–40 sek.</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Pas B</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Øvelse</th><th>Sæt</th><th>Gentagelser</th></tr></thead>
+      <tbody>
+        <tr><td><a href="/teknik/doedloeft/">Rumænsk dødløft</a></td><td>3</td><td>8–10</td></tr>
+        <tr><td>Skulderpres med håndvægte</td><td>3</td><td>8–10</td></tr>
+        <tr><td>Pulldown</td><td>3</td><td>10–12</td></tr>
+        <tr><td>Udfaldsskridt</td><td>2</td><td>10 pr. ben</td></tr>
+      </tbody>
+    </table></div>
+    <p>Start hvert pas med en kort <a href="/skadesforebyggelse/opvarmning/">opvarmning</a>.</p>
+  </section>
+  <section id="fremgang">
+    <h2>Sådan gør du fremskridt</h2>
+    <p>Vælg en vægt, hvor du kan tage den nederste ende af gentagelserne med god teknik. Når du kan tage den øverste ende i alle sæt, så øg vægten en smule næste gang. Skriv vægte og gentagelser ned, så du kan se fremgangen.</p>
+    <Ph foto="Træningsdagbog med noterede vægte" ratio="16 / 9" />
+  </section>
+  <section id="fejl">
+    <h2>Begynderfejl</h2>
+    <ul>
+      <li><strong>For tungt for tidligt:</strong> lær bevægelsen først.</li>
+      <li><strong>Skifter program hver uge:</strong> giv programmet 8–12 uger.</li>
+      <li><strong>Springer opvarmningen over:</strong> den tager 10 minutter og gør resten bedre.</li>
+      <li><strong>Køber alt udstyret fra start:</strong> det meste får du først brug for senere. Læs om <a href="/kom-i-gang/udstyr/">det udstyr, du faktisk har brug for</a>.</li>
+    </ul>
+  </section>
+</Article>

@@ -1,0 +1,48 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'hvorfor', label: 'Hvorfor albuen gør ondt' }, { id: 'juster', label: 'Det kan du justere' },
+  { id: 'hjaelp', label: 'Hvornår du skal søge hjælp' }, { id: 'faq', label: 'Spørgsmål og svar' },
+];
+const summary = [
+  'Smerter i albuen ved trækøvelser skyldes ofte, at belastningen er steget hurtigere, end vævet kan nå at vænne sig til.',
+  'Skru ned for mængden af trækøvelser i en periode, og øg igen gradvist.',
+  'Varier grebet, og brug stropper, så underarmen ikke skal klemme maksimalt i hvert sæt.',
+  'Søg hjælp ved hævelse, nedsat kraft, følelsesløshed, natlige smerter, eller hvis det ikke bliver bedre.',
+];
+---
+<Article slug="skadesforebyggelse/ondt-i-albuen" toc={toc} summary={summary} foto="Underarm og albue under pull-up">
+  <section id="hvorfor">
+    <h2>Hvorfor albuen gør ondt</h2>
+    <p>Musklerne, der bøjer fingrene og håndleddet, sidder fast omkring albuen. Når du trækker og klemmer hårdt om en stang, belastes disse fæster. Øger du mængden af pull-ups, rows eller curls hurtigt, kan albuen begynde at gøre ondt, typisk på inder- eller ydersiden.</p>
+    <p>Denne guide erstatter ikke en undersøgelse. Den giver et overblik over, hvad du selv kan justere, og hvornår du skal have hjælp.</p>
+  </section>
+  <section id="juster">
+    <h2>Det kan du justere i træningen</h2>
+    <ul>
+      <li><strong>Mængden:</strong> skær ned på antallet af sæt med trækøvelser i en periode, og byg op igen gradvist.</li>
+      <li><strong>Grebet:</strong> skift mellem overhånds-, underhånds- og neutralt greb. Mange tåler neutralt greb bedst.</li>
+      <li><strong>Klemmet:</strong> brug <a href="/greb/loftestropper/">løftestropper</a> på tunge sæt, så underarmen ikke skal klemme maksimalt hver gang.</li>
+      <li><strong>Øvelsesvalget:</strong> erstat øvelser, der provokerer smerten, med nogle, der ikke gør, fx kabelroning i stedet for pull-ups.</li>
+      <li><strong>Smerteniveauet:</strong> let ubehag, der er væk dagen efter, er ofte acceptabelt. Smerter, der øges under eller efter træning, er et tegn på at skrue ned.</li>
+    </ul>
+  </section>
+  <section id="hjaelp">
+    <h2>Hvornår du skal søge hjælp</h2>
+    <p>Kontakt en fysioterapeut eller læge, hvis:</p>
+    <ul>
+      <li>smerterne ikke bliver bedre efter 2–3 uger med tilpasset træning</li>
+      <li>albuen hæver, eller du mister kraft i hånden</li>
+      <li>du får prikken eller følelsesløshed i fingrene</li>
+      <li>smerterne vækker dig om natten</li>
+      <li>smerterne opstod ved et pludseligt smæld eller fald</li>
+    </ul>
+  </section>
+  <section id="faq" class="faq">
+    <h2>Ofte stillede spørgsmål</h2>
+    <details><summary>Skal jeg holde helt pause fra træningen?</summary><p>Ikke nødvendigvis. Mange kan træne videre med tilpasninger. En fysioterapeut kan hjælpe med at finde den rette belastning.</p></details>
+    <details><summary>Hjælper en albuebandage?</summary><p>Nogle oplever, at en bandage lindrer under aktivitet, men den behandler ikke årsagen. Brug den som supplement, ikke som løsning.</p></details>
+  </section>
+</Article>

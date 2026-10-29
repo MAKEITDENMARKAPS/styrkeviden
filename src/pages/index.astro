@@ -1,168 +1,85 @@
 ---
 import Base from '../layouts/Base.astro';
+import Ph from '../components/Ph.astro';
+import { categories, team, articles, newest, articleBySlug, catBySlug, memberById, articlesIn } from '../data/site';
+const guides = newest.map(articleBySlug);
+const check = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#51689b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
 ---
 <Base title="Styrkeviden – viden om styrketræning fra fagfolk" description="Guides om greb, udstyr, teknik og skadesforebyggelse – skrevet og gennemgået af fysioterapeuter, trænere og læger.">
-<div style="background: #EFEFEF; color: #272727; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100%">
-
-  <header style="background: #FFFFFF; border-bottom: 1px solid #DCDCDC">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-      <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #272727">
-        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#51689b"></rect><path d="M9 21c3 2 11 2 14-1M10 12h12M16 8v13" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
-        <span style="font-family: Manrope, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em">Styrkeviden</span>
-      </a>
-      <nav aria-label="Hovedmenu" style="display: flex; flex-wrap: wrap; gap: 4px 22px; font-weight: 500; font-size: 15px">
-        <a href="#" style="color: #272727; text-decoration: none">Greb &amp; løftestropper</a>
-        <a href="#" style="color: #272727; text-decoration: none">Håndled</a>
-        <a href="#" style="color: #272727; text-decoration: none">Kabeltræning</a>
-        <a href="#" style="color: #272727; text-decoration: none">Teknik</a>
-        <a href="#" style="color: #272727; text-decoration: none">Skadesforebyggelse</a>
-        <a href="#" style="color: #272727; text-decoration: none">Om os</a>
-      </nav>
-    </div>
-  </header>
-
-  <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center">
-    <div style="display: flex; flex-direction: column; gap: 20px">
-      <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #51689b">Viden om styrketræning</span>
-      <h1 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: 52px; line-height: 1.08; letter-spacing: -0.03em">Træn stærkere med viden fra fagfolk</h1>
-      <p style="margin: 0; font-size: 19px; color: #4A4A4A; max-width: 520px">Guides om greb, udstyr, teknik og skadesforebyggelse – skrevet og gennemgået af fysioterapeuter, trænere og læger, med kilder på alt.</p>
-      <form style="display: flex; gap: 8px; max-width: 520px; flex-wrap: wrap">
-        <label for="sog" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Søg i guides</label>
-        <input id="sog" type="search" placeholder="Søg fx “løftestropper” eller “håndledssmerter”" style="flex: 1 1 280px; height: 52px; padding: 0 18px; border: 1px solid #CFCFCF; border-radius: 10px; font: inherit; background: #FFFFFF; color: #272727">
-        <button type="button" style="height: 52px; padding: 0 24px; border: 0; border-radius: 10px; background: #51689b; color: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Søg</button>
+  <section class="wrap hero">
+    <div class="hero-text">
+      <span class="eyebrow">Viden om styrketræning</span>
+      <h1>Træn stærkere med viden fra fagfolk</h1>
+      <p class="lead">Guides om greb, udstyr, teknik og skadesforebyggelse – skrevet og gennemgået af fysioterapeuter, trænere og læger, med kilder på alt.</p>
+      <form class="search-form" action="/sog/" method="get" role="search">
+        <label for="sog" class="sr">Søg i guides</label>
+        <input id="sog" name="q" type="search" placeholder="Søg fx “løftestropper” eller “albue”" />
+        <button type="submit" class="btn">Søg</button>
       </form>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: #4A4A4A">
-        <span style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#51689b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Fagligt gennemgået</span>
-        <span style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#51689b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Kilder på alle påstande</span>
-        <span style="display: flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#51689b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>Åbent udgivet af MakeIt</span>
+      <div class="trust">
+        <span class="check"><Fragment set:html={check} />Fagligt gennemgået</span>
+        <span class="check"><Fragment set:html={check} />Kilder på påstande</span>
+        <span class="check"><Fragment set:html={check} />Åbent udgivet af MakeIt</span>
       </div>
     </div>
-    <div style="aspect-ratio: 4 / 3; border-radius: 16px; background: #DDE2EC; display: flex; align-items: center; justify-content: center; color: #51689b; font-weight: 600; font-size: 15px; text-align: center; padding: 24px">[HERO-FOTO: løfter i dødløft med stropper, naturligt lys]</div>
+    <Ph foto="Hero: løfter i dødløft med stropper, naturligt lys" ratio="4 / 3" />
   </section>
 
-  <section style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 64px">
-    <div style="display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 24px">
-      <h2 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em">Find den rigtige guide</h2>
-      <a href="#" style="font-weight: 600; text-decoration: none">Se alle emner →</a>
+  <section class="wrap" style="padding-bottom:64px">
+    <div class="section-head">
+      <h2>Find den rigtige guide</h2>
+      <a href="/emner/" class="more">Se alle emner</a>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px">
-      <a href="/greb/loftestropper/" style="background: #FFFFFF; border-radius: 14px; padding: 24px; text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 8px; border: 1px solid #E2E2E2">
-        <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px">Greb &amp; løftestropper</span>
-        <span style="color: #4A4A4A; font-size: 15px">Lasso, figure 8 eller løftegreb – og hvornår du skal bruge dem.</span>
-        <span style="color: #51689b; font-weight: 600; font-size: 14px">[ANTAL] guides →</span>
-      </a>
-      <a href="#" style="background: #FFFFFF; border-radius: 14px; padding: 24px; text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 8px; border: 1px solid #E2E2E2">
-        <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px">Håndled &amp; wrist wraps</span>
-        <span style="color: #4A4A4A; font-size: 15px">Støtte i pres, bænk og overhead – uden at gøre håndleddet svagere.</span>
-        <span style="color: #51689b; font-weight: 600; font-size: 14px">[ANTAL] guides →</span>
-      </a>
-      <a href="#" style="background: #FFFFFF; border-radius: 14px; padding: 24px; text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 8px; border: 1px solid #E2E2E2">
-        <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px">Kabeltræning</span>
-        <span style="color: #4A4A4A; font-size: 15px">Manchetter, øvelser og opsætning til ben, baller og ryg.</span>
-        <span style="color: #51689b; font-weight: 600; font-size: 14px">[ANTAL] guides →</span>
-      </a>
-      <a href="#" style="background: #FFFFFF; border-radius: 14px; padding: 24px; text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 8px; border: 1px solid #E2E2E2">
-        <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px">Teknik</span>
-        <span style="color: #4A4A4A; font-size: 15px">Dødløft, rows, pull-ups og shrugs trin for trin.</span>
-        <span style="color: #51689b; font-weight: 600; font-size: 14px">[ANTAL] guides →</span>
-      </a>
-      <a href="#" style="background: #FFFFFF; border-radius: 14px; padding: 24px; text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 8px; border: 1px solid #E2E2E2">
-        <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px">Skadesforebyggelse</span>
-        <span style="color: #4A4A4A; font-size: 15px">Greb, håndled og albuer – hvad fysioterapeuterne anbefaler.</span>
-        <span style="color: #51689b; font-weight: 600; font-size: 14px">[ANTAL] guides →</span>
-      </a>
-      <a href="#" style="background: #FFFFFF; border-radius: 14px; padding: 24px; text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 8px; border: 1px solid #E2E2E2">
-        <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 20px">Kom i gang</span>
-        <span style="color: #4A4A4A; font-size: 15px">Første program, udstyr og fejl de fleste begyndere laver.</span>
-        <span style="color: #51689b; font-weight: 600; font-size: 14px">[ANTAL] guides →</span>
-      </a>
-    </div>
-  </section>
-
-  <section style="background: #FFFFFF; border-top: 1px solid #E2E2E2; border-bottom: 1px solid #E2E2E2">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px">
-      <h2 style="margin: 0 0 24px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em">Nyeste guides</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px">
-        <a href="/greb/loftestropper/" style="text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 12px">
-          <div style="aspect-ratio: 16 / 10; border-radius: 12px; background: #DDE2EC; display: flex; align-items: center; justify-content: center; color: #51689b; font-weight: 600; font-size: 14px">[FOTO: løftestropper på stang]</div>
-          <span style="font-size: 13px; font-weight: 600; color: #51689b; text-transform: uppercase; letter-spacing: 0.06em">Greb &amp; løftestropper</span>
-          <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 21px; line-height: 1.3">Løftestropper: sådan vælger du den rigtige type</span>
-          <span style="font-size: 14px; color: #5A5A5A">Af [FORFATTER] · Gennemgået af [FAGPERSON]</span>
+    <div class="grid grid-cats">
+      {categories.map((c) => (
+        <a href={`/${c.slug}/`} class="card">
+          <span class="card-title">{c.name}</span>
+          <span class="card-text">{c.desc}</span>
+          <span class="card-meta">{articlesIn(c.slug).length} guides</span>
         </a>
-        <a href="#" style="text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 12px">
-          <div style="aspect-ratio: 16 / 10; border-radius: 12px; background: #DDE2EC; display: flex; align-items: center; justify-content: center; color: #51689b; font-weight: 600; font-size: 14px">[FOTO: wrist wraps under bænkpres]</div>
-          <span style="font-size: 13px; font-weight: 600; color: #51689b; text-transform: uppercase; letter-spacing: 0.06em">Håndled</span>
-          <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 21px; line-height: 1.3">Wrist wraps: hvornår giver de mening?</span>
-          <span style="font-size: 14px; color: #5A5A5A">Af [FORFATTER] · Gennemgået af [FAGPERSON]</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="wrap">
+      <div class="section-head"><h2>Nyeste guides</h2><a href="/emner/" class="more">Alle guides</a></div>
+      <div class="grid grid-guides">
+        {guides.map((g) => (
+          <a href={`/${g.slug}/`} class="guide">
+            <Ph foto={g.title} />
+            <span class="eyebrow">{catBySlug(g.cat).name}</span>
+            <span class="guide-title">{g.title}</span>
+            <span class="guide-meta">Af [FAGPERSON], {memberById(g.author).title.toLowerCase()}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2 class="h2" style="margin-bottom:8px">Fagpanelet</h2>
+    <p style="margin:0 0 28px;color:var(--muted);max-width:640px">Alle guides skrives eller gennemgås af en fagperson. Skribenterne honoreres af MakeIt for deres arbejde.</p>
+    <div class="grid grid-team">
+      {team.map((t) => (
+        <a href={`/fagpanel/#${t.id}`} class="person">
+          <div class="avatar"></div>
+          <div><span class="person-name">[FAGPERSON]</span><span class="person-title">{t.title}</span></div>
         </a>
-        <a href="#" style="text-decoration: none; color: #272727; display: flex; flex-direction: column; gap: 12px">
-          <div style="aspect-ratio: 16 / 10; border-radius: 12px; background: #DDE2EC; display: flex; align-items: center; justify-content: center; color: #51689b; font-weight: 600; font-size: 14px">[FOTO: kabelmaskine med manchet]</div>
-          <span style="font-size: 13px; font-weight: 600; color: #51689b; text-transform: uppercase; letter-spacing: 0.06em">Kabeltræning</span>
-          <span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 21px; line-height: 1.3">Kabelmanchetter: 8 øvelser til ben og baller</span>
-          <span style="font-size: 14px; color: #5A5A5A">Af [FORFATTER] · Gennemgået af [FAGPERSON]</span>
-        </a>
-      </div>
+      ))}
     </div>
   </section>
 
-  <section style="max-width: 1200px; margin: 0 auto; padding: 64px 24px">
-    <h2 style="margin: 0 0 8px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em">Fagpanelet</h2>
-    <p style="margin: 0 0 28px; color: #4A4A4A; max-width: 640px">Alle guides skrives eller gennemgås af en fagperson. Skribenterne honoreres af MakeIt for deres arbejde.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px">
-      <a href="#" style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: center; text-decoration: none; color: #272727">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: #DDE2EC; flex-shrink: 0"></div>
-        <div style="display: flex; flex-direction: column"><span style="font-weight: 600">[NAVN]</span><span style="font-size: 14px; color: #5A5A5A">Fysioterapeut</span></div>
-      </a>
-      <a href="#" style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: center; text-decoration: none; color: #272727">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: #DDE2EC; flex-shrink: 0"></div>
-        <div style="display: flex; flex-direction: column"><span style="font-weight: 600">[NAVN]</span><span style="font-size: 14px; color: #5A5A5A">Personlig træner</span></div>
-      </a>
-      <a href="#" style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: center; text-decoration: none; color: #272727">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: #DDE2EC; flex-shrink: 0"></div>
-        <div style="display: flex; flex-direction: column"><span style="font-weight: 600">[NAVN]</span><span style="font-size: 14px; color: #5A5A5A">Læge</span></div>
-      </a>
-      <a href="#" style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: center; text-decoration: none; color: #272727">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: #DDE2EC; flex-shrink: 0"></div>
-        <div style="display: flex; flex-direction: column"><span style="font-weight: 600">[NAVN]</span><span style="font-size: 14px; color: #5A5A5A">Styrkeløfttræner</span></div>
-      </a>
+  <section class="wrap" style="padding-bottom:72px">
+    <div class="band">
+      <div class="band-item">
+        <h2>Sådan arbejder vi</h2>
+        <p>Styrkeviden udgives af MakeIt Danmark ApS, som selv producerer træningsudstyr. Det står på hver side, så du altid ved, hvem der står bag.</p>
+        <a href="/metode/">Læs om vores metode</a>
+      </div>
+      <div class="band-item"><strong>Fagpersoner skriver</strong><span>Hver guide har en navngiven forfatter og en faglig reviewer.</span></div>
+      <div class="band-item"><strong>Kilder på påstande</strong><span>Forskning og producentdata linkes direkte i guiden.</span></div>
+      <div class="band-item"><strong>Opdateres løbende</strong><span>Alle ændringer står i en opdateringslog nederst i guiden.</span></div>
     </div>
   </section>
-
-  <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px">
-    <div style="background: #51689b; color: #FFFFFF; border-radius: 18px; padding: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px">
-      <div style="display: flex; flex-direction: column; gap: 12px">
-        <h2 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Sådan arbejder vi</h2>
-        <p style="margin: 0; opacity: 0.92">Styrkeviden udgives af MakeIt Danmark ApS, som selv producerer træningsudstyr. Det står på hver side, så du altid ved, hvem der står bag.</p>
-        <a href="#" style="color: #FFFFFF; font-weight: 600">Læs om vores metode og ejerskab →</a>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 18px">Fagpersoner skriver</span><span style="opacity: 0.92; font-size: 15px">Hver guide har en navngiven forfatter og en faglig reviewer.</span></div>
-      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 18px">Kilder på alt</span><span style="opacity: 0.92; font-size: 15px">Forskning og producentdata linkes direkte i teksten.</span></div>
-      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: Manrope, sans-serif; font-weight: 700; font-size: 18px">Opdateres løbende</span><span style="opacity: 0.92; font-size: 15px">Alle ændringer står i en opdateringslog nederst i guiden.</span></div>
-    </div>
-  </section>
-
-  <footer style="background: #272727; color: #EFEFEF">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; font-size: 15px">
-      <div style="display: flex; flex-direction: column; gap: 10px">
-        <span style="font-family: Manrope, sans-serif; font-weight: 800; font-size: 20px">Styrkeviden</span>
-        <span style="color: #CFCFCF">Udgivet af MakeIt Danmark ApS · CVR 43243985 · Motorgangen 7B, 2690 Karlslunde</span>
-        <span style="color: #CFCFCF">Indholdet er ikke medicinsk rådgivning.</span>
-      </div>
-      <nav aria-label="Emner" style="display: flex; flex-direction: column; gap: 8px">
-        <span style="font-weight: 600">Emner</span>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Greb &amp; løftestropper</a>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Håndled</a>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Kabeltræning</a>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Teknik</a>
-      </nav>
-      <nav aria-label="Om siden" style="display: flex; flex-direction: column; gap: 8px">
-        <span style="font-weight: 600">Om siden</span>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Om os &amp; ejerskab</a>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Fagpanelet</a>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Sådan arbejder vi</a>
-        <a href="#" style="color: #CFCFCF; text-decoration: none">Kontakt</a>
-      </nav>
-    </div>
-  </footer>
-</div>
 </Base>

@@ -1,0 +1,55 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'hvad', label: 'Hvad wrist wraps gør' }, { id: 'hvornaar', label: 'Hvornår du skal bruge dem' },
+  { id: 'laengde', label: '40 eller 60 cm' }, { id: 'paasaetning', label: 'Sådan sætter du dem på' },
+  { id: 'produkt-wrist', label: 'Vores eget produkt' }, { id: 'faq', label: 'Spørgsmål og svar' },
+];
+const summary = [
+  'Wrist wraps støtter håndleddet i <strong>presøvelser</strong> som bænkpres, skulderpres og dips – ikke grebet i trækøvelser.',
+  'Brug dem på de tunge sæt, ikke i opvarmningen.',
+  '<strong>40 cm</strong> passer til almindelig styrketræning, <strong>60 cm</strong> giver flere omviklinger og fastere støtte.',
+  'De skal sidde over selve håndledsleddet – sidder de for lavt på underarmen, støtter de ikke.',
+];
+const sources = [{ label: 'MakeIt – Wrist Wraps (producentdata)', url: 'https://www.nowmakeit.eu/products/wrist-wraps' }];
+---
+<Article slug="handled/wrist-wraps" toc={toc} summary={summary} sources={sources} foto="Wrist wraps om håndled under bænkpres">
+  <section id="hvad">
+    <h2>Hvad wrist wraps gør</h2>
+    <p>Wrist wraps er stive bind, der vikles stramt om håndleddet. De begrænser, hvor meget håndleddet kan bøje bagover under tung belastning, så det lettere holder sig stablet over underarmen. Det giver en mere stabil fornemmelse, når stangen presser hånden bagud.</p>
+    <p>De gør dig ikke stærkere i sig selv, og de er ikke en behandling af smerter. Har du ondt i håndleddet, så få det undersøgt af en fysioterapeut.</p>
+  </section>
+  <section id="hvornaar">
+    <h2>Hvornår du skal bruge dem</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Situation</th><th>Wrist wraps?</th><th>Hvorfor</th></tr></thead>
+      <tbody>
+        <tr><td>Tunge sæt i bænkpres og skulderpres</td><td><strong>Ja</strong></td><td>Håndleddet bærer meget vægt og presses bagover</td></tr>
+        <tr><td>Dips og håndstandspres</td><td><strong>Ja, hvis det føles ustabilt</strong></td><td>Hele kropsvægten går gennem håndleddet</td></tr>
+        <tr><td>Opvarmning og lette sæt</td><td><strong>Nej</strong></td><td>Lad håndleddet arbejde selv</td></tr>
+        <tr><td>Dødløft, rows, pull-ups</td><td><strong>Nej</strong></td><td>Her er det grebet, der begrænser – brug <a href="/greb/loftestropper/">løftestropper</a></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section id="laengde">
+    <h2>40 eller 60 cm?</h2>
+    <p>Længden afgør, hvor mange gange bindet kan vikles om håndleddet. Et kortere bind er hurtigt at sætte på og giver moderat støtte. Et længere bind giver flere omviklinger og dermed fastere støtte – det foretrækker mange til de tungeste pres.</p>
+  </section>
+  <section id="paasaetning">
+    <h2>Sådan sætter du dem på</h2>
+    <div class="steps">
+      <div class="step"><Ph foto="Trin 1: bindet placeres over håndledsleddet" ratio="4 / 3" /><strong>1. Placer bindet</strong><span>Over selve håndledsleddet, ikke nede på underarmen.</span></div>
+      <div class="step"><Ph foto="Trin 2: bindet vikles stramt" ratio="4 / 3" /><strong>2. Vikl stramt</strong><span>Træk let i bindet for hver omgang.</span></div>
+      <div class="step"><Ph foto="Trin 3: velcroen lukkes" ratio="4 / 3" /><strong>3. Luk velcroen</strong><span>Løsn bindet mellem sættene.</span></div>
+    </div>
+  </section>
+  <Product id="wrist" />
+  <section id="faq" class="faq">
+    <h2>Ofte stillede spørgsmål</h2>
+    <details><summary>Bliver håndleddet svagere af wrist wraps?</summary><p>Ikke hvis du kun bruger dem på de tunge sæt. Opvarmning og lettere sæt uden bind giver håndleddet den træning, det har brug for.</p></details>
+    <details><summary>Hvor stramt skal de sidde?</summary><p>Stramt nok til at håndleddet føles stabilt, men ikke så stramt, at fingrene sover eller skifter farve. Løsn dem mellem sættene.</p></details>
+    <details><summary>Kan jeg bruge wrist wraps, hvis jeg har ondt i håndleddet?</summary><p>De kan føles støttende, men de behandler ikke årsagen. Har du smerter, der ikke går over, så tal med en fysioterapeut. Læs også om <a href="/handled/haandledsstilling/">håndledsstilling i pres</a>.</p></details>
+  </section>
+</Article>

@@ -1,0 +1,52 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'varianter', label: 'Fire varianter' }, { id: 'teknik', label: 'Ram ryggen, ikke armene' },
+  { id: 'fejl', label: 'Typiske fejl' }, { id: 'greb', label: 'Grebet' },
+];
+const summary = [
+  'Rows træner den øvre og midterste ryg, bagskuldre og biceps.',
+  'Start bevægelsen med skulderbladene, og træk albuen bagud – ikke hånden op.',
+  'Brug en vægt, du kan styre uden at svinge med overkroppen.',
+  'Ved tunge rows kan <a href="/greb/loftestropper/">løftestropper</a> tage belastningen af grebet.',
+];
+---
+<Article slug="teknik/rows" toc={toc} summary={summary} foto="Håndvægtsroning på bænk">
+  <section id="varianter">
+    <h2>Fire row-varianter</h2>
+    <div class="types">
+      <div class="type"><span class="type-name">Stangroning</span><p>Fremoverbøjet med vægtstang.</p><span><strong>Fordel:</strong> kan løftes tungt</span><span><strong>Kræver:</strong> stærk og stabil lænd</span></div>
+      <div class="type"><span class="type-name">Håndvægtsroning</span><p>Én arm ad gangen med støtte på en bænk.</p><span><strong>Fordel:</strong> stabil og nem at lære</span><span><strong>Kræver:</strong> en bænk</span></div>
+      <div class="type"><span class="type-name">Kabelroning</span><p>Siddende ved kabelmaskinen.</p><span><strong>Fordel:</strong> jævn modstand hele vejen</span><span><strong>Kræver:</strong> kabelmaskine</span></div>
+      <div class="type"><span class="type-name">Brystunderstøttet roning</span><p>Med brystet mod en skrå bænk.</p><span><strong>Fordel:</strong> aflaster lænden helt</span><span><strong>Kræver:</strong> skråbænk og håndvægte</span></div>
+    </div>
+  </section>
+  <section id="teknik">
+    <h2>Ram ryggen, ikke armene</h2>
+    <ol>
+      <li>Start med strakte arme og skuldrene trukket let frem.</li>
+      <li>Træk skulderbladene bagud og ned, før armene bøjer.</li>
+      <li>Før albuen bagud langs kroppen, som om du vil putte den i baglommen.</li>
+      <li>Hold et øjeblik i toppen, og sænk vægten kontrolleret.</li>
+    </ol>
+    <Ph foto="Albuen føres bagud langs kroppen i roning" ratio="16 / 9" />
+  </section>
+  <section id="fejl">
+    <h2>Typiske fejl</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Fejl</th><th>Ret det sådan</th></tr></thead>
+      <tbody>
+        <tr><td>Svinger med overkroppen</td><td>Sæt vægten ned, og hold overkroppen stille</td></tr>
+        <tr><td>Trækker skuldrene op mod ørerne</td><td>Tænk "skuldrene ned i baglommen"</td></tr>
+        <tr><td>Korte gentagelser</td><td>Stræk armene helt i bunden af hver gentagelse</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section id="greb">
+    <h2>Grebet i rows</h2>
+    <p>Ved mange gentagelser eller tunge vægte bliver underarmene ofte trætte før ryggen. Brug almindeligt greb i opvarmningen, og stropper på de tunge sæt. Så får ryggen arbejdet.</p>
+  </section>
+  <Product id="strapit" />
+</Article>

@@ -1,0 +1,44 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'hvorfor', label: 'Hvorfor varme op' }, { id: 'generel', label: 'Trin 1: generel opvarmning' },
+  { id: 'specifik', label: 'Trin 2: opvarmningssæt' }, { id: 'eksempel', label: 'Eksempel' },
+];
+const summary = [
+  'Opvarmning gør kroppen og bevægelsen klar til de tunge sæt.',
+  '<strong>Trin 1:</strong> 5–10 minutters let aktivitet, der får pulsen op.',
+  '<strong>Trin 2:</strong> opvarmningssæt i den øvelse, du skal træne, med gradvist stigende vægt.',
+  'Hold opvarmningssættene lette nok til, at du ikke bliver træt før arbejdssættene.',
+];
+---
+<Article slug="skadesforebyggelse/opvarmning" toc={toc} summary={summary} foto="Let opvarmning på romaskine før styrketræning">
+  <section id="hvorfor">
+    <h2>Hvorfor varme op?</h2>
+    <p>En god opvarmning gør musklerne varmere og bevægelsen mere velkendt, før vægten bliver tung. Den giver dig også en chance for at mærke efter, om noget føles anderledes end normalt, inden du presser dig selv.</p>
+  </section>
+  <section id="generel">
+    <h2>Trin 1: generel opvarmning</h2>
+    <p>Brug 5–10 minutter på let aktivitet, der får pulsen op: romaskine, cykel, rask gang på løbebånd eller sjippetov. Du skal blive varm og lidt forpustet, ikke træt.</p>
+  </section>
+  <section id="specifik">
+    <h2>Trin 2: opvarmningssæt</h2>
+    <p>Start med den første øvelse med en let vægt eller den tomme stang, og øg vægten i nogle trin, til du er tæt på arbejdsvægten. Jo tungere du skal løfte, jo flere trin har du brug for. Gentagelserne falder, mens vægten stiger.</p>
+    <p>Lav opvarmningssættene med almindeligt greb, også selvom du bruger <a href="/greb/loftestropper/">stropper</a> eller <a href="/handled/wrist-wraps/">wrist wraps</a> på de tunge sæt.</p>
+  </section>
+  <section id="eksempel">
+    <h2>Eksempel: opvarmning til dødløft med 100 kg</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Sæt</th><th>Vægt</th><th>Gentagelser</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Tom stang (20 kg)</td><td>10</td></tr>
+        <tr><td>2</td><td>50 kg</td><td>5</td></tr>
+        <tr><td>3</td><td>70 kg</td><td>3</td></tr>
+        <tr><td>4</td><td>85 kg</td><td>1–2</td></tr>
+        <tr><td colspan="3"><strong>Arbejdssæt med 100 kg</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>Til de næste øvelser i træningspasset er 1–2 lette sæt som regel nok, fordi kroppen allerede er varm.</p>
+  </section>
+</Article>

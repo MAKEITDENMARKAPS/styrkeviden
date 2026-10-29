@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Søg – Styrkeviden" description="Søg i guides på Styrkeviden." active="sog">
+  <div class="wrap" style="padding-bottom:72px">
+    <nav class="crumbs" aria-label="Brødkrumme"><a href="/">Forside</a><span aria-hidden="true">/</span><span>Søg</span></nav>
+    <div class="page-head">
+      <h1>Søg i guides</h1>
+      <form class="search-form" id="form" action="/sog/" method="get" role="search">
+        <label for="q" class="sr">Søgeord</label>
+        <input id="q" name="q" type="search" placeholder="Søg fx “løftestropper” eller “albue”" autocomplete="off" />
+        <button type="submit" class="btn">Søg</button>
+      </form>
+      <p id="status" class="lead" style="font-size:16px" aria-live="polite"></p>
+    </div>
+    <ul class="results" id="results"></ul>
+  </div>
+  <script>
+    const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/æ/g, 'ae').replace(/ø/g, 'o');
+    const input = document.getElementById('q') as HTMLInputElement;
+    const list = document.getElementById('results')!;
+    const status = document.getElementById('status')!;
+    let items: { t: string; d: string; c: string; k: string; u: string }[] = [];
+    function render(q: string) {
+      list.replaceChildren();
+      const terms = norm(q).split(/\s+/).filter(Boolean);
+      if (!terms.length) { status.textContent = 'Skriv et søgeord, fx løftestropper, håndled eller albue.'; return; }
+      const hits = items
+        .map((it) => {
+          const t = norm(it.t), all = norm(`${it.t} ${it.d} ${it.c} ${it.k}`);
+          if (!terms.every((x) => all.includes(x))) return null;
+          return { it, score: terms.filter((x) => t.includes(x)).length };
+        })
+        .filter(Boolean)
+        .sort((a, b) => b!.score - a!.score) as { it: (typeof items)[number] }[];
+      status.textContent = hits.length ? `${hits.length} resultat${hits.length === 1 ? '' : 'er'} for “${q}”` : `Ingen resultater for “${q}”. Prøv et andet ord, eller se alle emner.`;
+      for (const { it } of hits) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = it.u;
+        const small = document.createElement('small'); small.textContent = it.c;
+        const strong = document.createElement('strong'); strong.textContent = it.t;
+        const span = document.createElement('span'); span.textContent = it.d;
+        a.append(small, strong, span); li.append(a); list.append(li);
+      }
+      if (!hits.length) {
+        const li = document.createElement('li'); const a = document.createElement('a'); a.href = '/emner/';
+        const strong = document.createElement('strong'); strong.textContent = 'Se alle emner'; a.append(strong); li.append(a); list.append(li);
+      }
+    }
+    const q0 = new URLSearchParams(location.search).get('q') || '';
+    input.value = q0;
+    fetch('/sog-index.json').then((r) => r.json()).then((d) => { items = d; render(input.value); });
+    input.addEventListener('input', () => {
+      render(input.value);
+      const u = new URL(location.href); u.searchParams.set('q', input.value); history.replaceState(null, '', u);
+    });
+    document.getElementById('form')!.addEventListener('submit', (e) => { e.preventDefault(); render(input.value); });
+  </script>
+</Base>

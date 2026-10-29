@@ -1,7 +1,10 @@
 ---
-interface Props { title: string; description: string; }
-const { title, description } = Astro.props;
+import '../styles/global.css';
+import { categories, navCats } from '../data/site';
+interface Props { title: string; description: string; active?: string; }
+const { title, description, active } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = navCats.map((s) => categories.find((c) => c.slug === s)!);
 ---
 <!doctype html>
 <html lang="da">
@@ -20,15 +23,47 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style is:global>
-    body { margin: 0; background: #EFEFEF; }
-    a { color: #51689b; }
-    a:hover { color: #3e5280; }
-    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid #51689b; outline-offset: 2px; }
-    img { max-width: 100%; }
-  </style>
+  <slot name="head" />
 </head>
 <body>
-  <slot />
+  <header class="site-header">
+    <div class="wrap">
+      <a href="/" class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#51689b"></rect><path d="M9 21c3 2 11 2 14-1M10 12h12M16 8v13" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path></svg>
+        <span>Styrkeviden</span>
+      </a>
+      <nav class="nav" aria-label="Hovedmenu">
+        {nav.map((c) => <a href={`/${c.slug}/`} aria-current={active === c.slug ? 'page' : undefined}>{c.slug === 'handled' ? 'Håndled' : c.name}</a>)}
+        <a href="/om-os/" aria-current={active === 'om-os' ? 'page' : undefined}>Om os</a>
+        <a href="/sog/" class="search-link" aria-current={active === 'sog' ? 'page' : undefined}>
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" fill="none"></circle><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>Søg
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-about">
+        <span class="footer-brand">Styrkeviden</span>
+        <span>Udgivet af MakeIt Danmark ApS · CVR 43243985 · Motorgangen 7B, 2690 Karlslunde</span>
+        <span>Indholdet er ikke medicinsk rådgivning. Har du smerter, så tal med en fysioterapeut eller læge.</span>
+      </div>
+      <nav aria-label="Emner">
+        <span class="footer-title">Emner</span>
+        {categories.map((c) => <a href={`/${c.slug}/`}>{c.name}</a>)}
+      </nav>
+      <nav aria-label="Om siden">
+        <span class="footer-title">Om siden</span>
+        <a href="/om-os/">Om os &amp; ejerskab</a>
+        <a href="/fagpanel/">Fagpanelet</a>
+        <a href="/metode/">Sådan arbejder vi</a>
+        <a href="/kontakt/">Kontakt</a>
+        <a href="/sog/">Søg</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

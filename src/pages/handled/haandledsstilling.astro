@@ -1,0 +1,47 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'stablet', label: 'Stablet håndled' }, { id: 'placering', label: 'Stangen i hånden' },
+  { id: 'fejl', label: 'Typiske fejl' }, { id: 'hjaelp', label: 'Hvornår du skal søge hjælp' },
+];
+const summary = [
+  'Målet er et <strong>stablet håndled</strong>: knoerne peger op, og stangen ligger lige over underarmen.',
+  'Læg stangen lavt i håndfladen, tæt på håndroden – ikke ude i fingrene.',
+  'Grebsbredden skal give lodrette underarme i bunden af løftet.',
+  'Smerter, der ikke går over, skal undersøges af en fysioterapeut.',
+];
+---
+<Article slug="handled/haandledsstilling" toc={toc} summary={summary} foto="Håndled stablet over underarmen i bænkpres">
+  <section id="stablet">
+    <h2>Hvad betyder et stablet håndled?</h2>
+    <p>I et stablet håndled ligger stangen lige over underarmens knogler, så vægten går gennem underarmen og ned i albuen. Når håndleddet i stedet bøjer bagover, hænger vægten bag underarmen, og håndleddet skal holde den på plads med musklerne alene. Det er mere anstrengende og kan føles ubehageligt ved tunge løft.</p>
+    <Ph foto="Sammenligning: stablet håndled og bagoverbøjet håndled" ratio="16 / 8" />
+  </section>
+  <section id="placering">
+    <h2>Sådan placerer du stangen i hånden</h2>
+    <ol>
+      <li>Læg stangen diagonalt i håndfladen, så den hviler på den tykke del ved håndroden.</li>
+      <li>Luk fingrene om stangen, og pres knoerne let op mod loftet.</li>
+      <li>Klem hårdt om stangen – et fast greb gør det lettere at holde håndleddet stabilt.</li>
+      <li>Tjek grebsbredden: i bunden af bænkpres skal underarmene være tæt på lodrette set forfra.</li>
+    </ol>
+  </section>
+  <section id="fejl">
+    <h2>Typiske fejl</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Fejl</th><th>Hvad der sker</th><th>Ret det sådan</th></tr></thead>
+      <tbody>
+        <tr><td>Stangen ligger ude i fingrene</td><td>Håndleddet bøjer bagover</td><td>Flyt stangen ned mod håndroden</td></tr>
+        <tr><td>Løst greb</td><td>Håndleddet vipper under vægten</td><td>Klem hårdt om stangen gennem hele løftet</td></tr>
+        <tr><td>For bredt eller smalt greb</td><td>Underarmen står skævt, og vægten går ikke lige ned</td><td>Juster bredden, til underarmen er lodret i bunden</td></tr>
+      </tbody>
+    </table></div>
+    <p>Har du styr på teknikken og vil have ekstra støtte på de tungeste sæt, kan du læse om <a href="/handled/wrist-wraps/">wrist wraps</a>.</p>
+  </section>
+  <section id="hjaelp">
+    <h2>Hvornår du skal søge hjælp</h2>
+    <p>Lidt ømhed efter en ny øvelse er almindeligt. Kontakt en fysioterapeut eller læge, hvis smerterne ikke aftager efter et par uger med lettere træning, hvis håndleddet hæver, eller hvis du får prikken eller følelsesløshed i fingrene.</p>
+  </section>
+</Article>

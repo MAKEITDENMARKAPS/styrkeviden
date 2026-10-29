@@ -1,0 +1,60 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'hvorfor', label: 'Hvorfor grebet giver op' }, { id: 'grebstyper', label: 'Tre måder at holde stangen' },
+  { id: 'oevelser', label: 'Fem øvelser' }, { id: 'program', label: 'Sådan passer det ind' },
+  { id: 'stropper', label: 'Greb og stropper sammen' }, { id: 'faq', label: 'Spørgsmål og svar' },
+];
+const summary = [
+  'Grebet er ofte det første, der giver op i dødløft, rows og shrugs – før de muskler, du egentlig vil træne.',
+  'Træn grebet direkte med <strong>bærevandring, hæng i stangen og statiske hold</strong> 1–2 gange om ugen.',
+  'Brug almindeligt greb i opvarmning og lette sæt, og spar stropperne til de tunge sæt.',
+  'Kalk hjælper, når stangen glider på grund af sved, ikke når grebet er træt.',
+];
+---
+<Article slug="greb/grebstraening" toc={toc} summary={summary} foto="Hænder med kalk om en vægtstang">
+  <section id="hvorfor">
+    <h2>Hvorfor grebet giver op</h2>
+    <p>Underarmens muskler er små i forhold til ryg og ben. Når vægten bliver tung, eller sættet bliver langt, bliver fingrene trætte, før resten af kroppen er færdig. Det mærkes især i dødløft, rows, shrugs og pull-ups.</p>
+    <p>Grebsstyrke er en egenskab, der kan trænes som alt andet. Det kræver bare, at du giver grebet arbejde – og ikke bruger stropper på hvert eneste sæt.</p>
+  </section>
+  <section id="grebstyper">
+    <h2>Tre måder at holde stangen</h2>
+    <div class="types">
+      <div class="type"><span class="type-name">Overhåndsgreb</span><p>Begge håndflader vender mod dig.</p><span><strong>Fordel:</strong> træner grebet mest</span><span><strong>Ulempe:</strong> stangen ruller ud af hånden ved tunge løft</span></div>
+      <div class="type"><span class="type-name">Krydsgreb</span><p>Én håndflade vender mod dig, den anden væk.</p><span><strong>Fordel:</strong> stangen kan ikke rulle</span><span><strong>Ulempe:</strong> skæv belastning – skift side mellem sæt</span></div>
+      <div class="type"><span class="type-name">Hook grip</span><p>Tommelfingeren låses under pege- og langfinger.</p><span><strong>Fordel:</strong> meget sikkert greb</span><span><strong>Ulempe:</strong> gør ondt på tommelfingeren i starten</span></div>
+    </div>
+  </section>
+  <section id="oevelser">
+    <h2>Fem øvelser til et stærkere greb</h2>
+    <h3>1. Bærevandring (farmer's walk)</h3>
+    <p>Gå 20–40 meter med en tung håndvægt eller kettlebell i hver hånd. Rank ryg, korte skridt. 3–4 runder.</p>
+    <h3>2. Hæng i stangen</h3>
+    <p>Hæng i en pull-up-stang med strakte arme så længe, du kan holde et godt greb. 3 sæt. Når du kan hænge mere end 60 sekunder, så tilføj vægt eller hæng i én hånd ad gangen med støtte.</p>
+    <h3>3. Statisk hold i toppen af dødløft</h3>
+    <p>Løft stangen fra et rack i hoftehøjde, og hold den i 10–20 sekunder med overhåndsgreb. Start med en vægt, du kan holde i 20 sekunder.</p>
+    <h3>4. Pladeklemme</h3>
+    <p>Klem to vægtskiver sammen med glatsiden udad mellem tommel og fingre, og hold dem i 15–30 sekunder. Træner knibegrebet.</p>
+    <h3>5. Håndledscurls</h3>
+    <p>Sæt dig med underarmene på lårene og en let stang i hænderne. Rul stangen ned i fingrene og op igen. 2–3 sæt à 15–20 gentagelser.</p>
+    <Ph foto="Bærevandring med to kettlebells" ratio="16 / 9" />
+  </section>
+  <section id="program">
+    <h2>Sådan passer det ind i din træning</h2>
+    <p>Grebstræning behøver ikke en hel træningsdag. Læg to af øvelserne i slutningen af et træningspas 1–2 gange om ugen, fx bærevandring og hæng i stangen. Undgå at træne grebet hårdt dagen før tunge dødløft.</p>
+  </section>
+  <section id="stropper">
+    <h2>Greb og stropper sammen</h2>
+    <p>Stropper og grebstræning udelukker ikke hinanden. Brug almindeligt greb i opvarmningen og på de lette sæt, og tag stropperne på, når vægten bliver så tung, at grebet ellers stopper sættet. Så får ryggen den belastning, den skal have, og grebet bliver stadig trænet. Læs mere i <a href="/greb/loftestropper/">guiden til løftestropper</a>.</p>
+  </section>
+  <Product id="strapit" />
+  <section id="faq" class="faq">
+    <h2>Ofte stillede spørgsmål</h2>
+    <details><summary>Hjælper kalk på grebet?</summary><p>Kalk tørrer sved og giver mere friktion. Det hjælper, når stangen glider, men gør ikke et træt greb stærkere.</p></details>
+    <details><summary>Hvor hurtigt bliver grebet stærkere?</summary><p>De fleste mærker forskel efter nogle uger med regelmæssig grebstræning. Fremgangen følger samme princip som anden styrketræning: lidt mere vægt eller tid over tid.</p></details>
+    <details><summary>Gør det ondt i fingrene at bruge hook grip?</summary><p>Ja, i starten. Begynd med lette vægte, og øg gradvist. Tape om tommelfingeren kan gøre det mere behageligt.</p></details>
+  </section>
+</Article>

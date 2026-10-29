@@ -1,0 +1,58 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'trin', label: 'Trin for trin' }, { id: 'fejl', label: 'Typiske fejl' },
+  { id: 'greb', label: 'Grebet' }, { id: 'varianter', label: 'Varianter' }, { id: 'faq', label: 'Spørgsmål og svar' },
+];
+const summary = [
+  'Stangen starter over midten af foden og bevæger sig i en lige linje tæt på benene.',
+  'Spænd ryggen, før stangen forlader gulvet, og hold den neutral hele vejen.',
+  'Skub gulvet væk med benene i stedet for at trække med ryggen.',
+  'Brug <a href="/greb/loftestropper/">løftestropper</a> på de tunge sæt, hvis grebet giver op før ryggen og benene.',
+];
+---
+<Article slug="teknik/doedloeft" toc={toc} summary={summary} foto="Løfter i startpositionen til dødløft">
+  <section id="trin">
+    <h2>Dødløft trin for trin</h2>
+    <div class="steps">
+      <div class="step"><Ph foto="Trin 1: fødder under stangen" ratio="4 / 3" /><strong>1. Fødderne</strong><span>Hoftebredde, stangen over midten af foden.</span></div>
+      <div class="step"><Ph foto="Trin 2: greb om stangen" ratio="4 / 3" /><strong>2. Grebet</strong><span>Bøj ned og grib lige uden for benene.</span></div>
+      <div class="step"><Ph foto="Trin 3: spændt ryg" ratio="4 / 3" /><strong>3. Spænd op</strong><span>Skinneben mod stangen, brystet frem, ryggen neutral.</span></div>
+      <div class="step"><Ph foto="Trin 4: løftet" ratio="4 / 3" /><strong>4. Løft</strong><span>Skub gulvet væk, og stræk hofte og knæ samtidig.</span></div>
+      <div class="step"><Ph foto="Trin 5: nedsænkning" ratio="4 / 3" /><strong>5. Ned igen</strong><span>Hofterne bagud først, så knæene, når stangen passerer dem.</span></div>
+    </div>
+  </section>
+  <section id="fejl">
+    <h2>Typiske fejl</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Fejl</th><th>Ret det sådan</th></tr></thead>
+      <tbody>
+        <tr><td>Stangen glider væk fra benene</td><td>Tænk på at skubbe stangen ind mod kroppen hele vejen op</td></tr>
+        <tr><td>Hofterne skyder op først</td><td>Spænd ryggen mere, og skub med benene fra starten</td></tr>
+        <tr><td>Rykker stangen fra gulvet</td><td>Træk slakken ud af stangen, før du løfter</td></tr>
+        <tr><td>Læner sig bagover i toppen</td><td>Stop, når hofte og knæ er strakte</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section id="greb">
+    <h2>Grebet i dødløft</h2>
+    <p>Start med overhåndsgreb. Når vægten bliver så tung, at stangen ruller ud af hænderne, kan du skifte til krydsgreb eller hook grip – eller bruge stropper. Læs mere om <a href="/greb/grebstraening/">grebstræning</a> og <a href="/greb/loftestropper/">løftestropper</a>.</p>
+  </section>
+  <Product id="strapit" />
+  <section id="varianter">
+    <h2>Varianter</h2>
+    <ul>
+      <li><strong>Rumænsk dødløft (RDL):</strong> starter fra toppen og sænkes kun til midt på skinnebenet med næsten strakte ben. Lægger mere vægt på baglår og baller.</li>
+      <li><strong>Sumo-dødløft:</strong> bred fodstilling og greb inden for benene. Mere oprejst overkrop.</li>
+      <li><strong>Trap bar-dødløft:</strong> med en sekskantet stang, hvor du står inde i stangen. Lettere at lære for mange.</li>
+    </ul>
+  </section>
+  <section id="faq" class="faq">
+    <h2>Ofte stillede spørgsmål</h2>
+    <details><summary>Skal jeg bruge bælte?</summary><p>Ikke for at lære løftet. Et bælte kan give ekstra stabilitet ved meget tunge sæt, når teknikken sidder.</p></details>
+    <details><summary>Hvor ofte skal jeg løfte dødløft?</summary><p>1–2 gange om ugen er nok for de fleste. Dødløft belaster meget, så giv kroppen tid til at restituere.</p></details>
+    <details><summary>Er det farligt for ryggen?</summary><p>Dødløft med god teknik og passende vægt er en almindelig og sikker øvelse. Øg vægten gradvist, og stop sættet, hvis teknikken bryder sammen.</p></details>
+  </section>
+</Article>

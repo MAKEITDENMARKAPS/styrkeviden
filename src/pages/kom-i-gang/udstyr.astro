@@ -1,0 +1,47 @@
+---
+import Article from "../../layouts/Article.astro";
+import Ph from "../../components/Ph.astro";
+import Product from "../../components/Product.astro";
+const toc = [
+  { id: 'fra-start', label: 'Fra første dag' }, { id: 'senere', label: 'Når vægtene bliver tunge' },
+  { id: 'produkter', label: 'Vores egne produkter' },
+];
+const summary = [
+  'Du behøver ikke købe noget særligt for at starte – almindeligt træningstøj og flade sko er nok.',
+  '<strong>Løftestropper</strong> giver mening, når grebet stopper dig i dødløft og rows.',
+  '<strong>Wrist wraps</strong> giver mening, når håndleddet føles ustabilt i tunge pres.',
+  '<strong>Kabelmanchetter</strong> giver mening, hvis du træner baller og ben på kabelmaskinen.',
+];
+---
+<Article slug="kom-i-gang/udstyr" toc={toc} summary={summary} foto="Træningstaske med sko, stropper og håndledsbind">
+  <section id="fra-start">
+    <h2>Det skal du bruge fra første dag</h2>
+    <ul>
+      <li><strong>Træningstøj, du kan bevæge dig i.</strong> Intet særligt krævet.</li>
+      <li><strong>Sko med flad, fast sål.</strong> Bløde løbesko gør det sværere at stå stabilt i squat og dødløft.</li>
+      <li><strong>En drikkedunk.</strong></li>
+      <li><strong>En måde at notere dine vægte på,</strong> fx en notesbog eller en app. Se <a href="/kom-i-gang/foerste-program/">dit første styrkeprogram</a>.</li>
+    </ul>
+  </section>
+  <section id="senere">
+    <h2>Når vægtene bliver tunge</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Udstyr</th><th>Giver mening når</th><th>Læs mere</th></tr></thead>
+      <tbody>
+        <tr><td>Løftestropper</td><td>Grebet giver op før ryg og ben</td><td><a href="/greb/loftestropper/">Guide til løftestropper</a></td></tr>
+        <tr><td>Wrist wraps</td><td>Håndleddet føles ustabilt i tunge pres</td><td><a href="/handled/wrist-wraps/">Guide til wrist wraps</a></td></tr>
+        <tr><td>Kabelmanchetter</td><td>Du vil træne baller og ben i kabelmaskinen</td><td><a href="/kabeltraening/kabelmanchetter-oevelser/">8 øvelser med manchetter</a></td></tr>
+        <tr><td>Kalk</td><td>Stangen glider på grund af sved</td><td><a href="/greb/grebstraening/">Guide til grebstræning</a></td></tr>
+        <tr><td>Løftebælte</td><td>Du løfter tunge squat og dødløft med sikker teknik</td><td><a href="/teknik/doedloeft/">Dødløft trin for trin</a></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section id="produkter">
+    <h2>Vores egne produkter</h2>
+    <p>MakeIt, som udgiver Styrkeviden, producerer tre af tingene på listen. Her er de, så du kan se, hvad de er – men du har ikke brug for dem fra første dag.</p>
+  </section>
+  <Product id="strapit" />
+  <Product id="wrist" />
+  <Product id="hookit" />
+  <p>Køber du tre MakeIt-produkter, giver MakeIt 15 % rabat, og fire produkter giver 20 % rabat. Der er gratis fragt over 499 kr og 100 dages returret.</p>
+</Article>
