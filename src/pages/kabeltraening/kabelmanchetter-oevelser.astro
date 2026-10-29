@@ -32,7 +32,7 @@ const ex = [
   <section id="oevelser">
     <h2>De 8 øvelser</h2>
     {ex.map(([name, text], i) => (
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-items:center">
+      <div class="exercise">
         <Ph foto={`Øvelse ${i + 1}: ${name}`} ratio="4 / 3" />
         <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0">{i + 1}. {name}</h3><p>{text}</p></div>
       </div>

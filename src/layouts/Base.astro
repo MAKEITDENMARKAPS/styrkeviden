@@ -39,6 +39,19 @@ const nav = navCats.map((s) => categories.find((c) => c.slug === s)!);
           <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" fill="none"></circle><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>Søg
         </a>
       </nav>
+      <details class="menu">
+        <summary aria-label="Åbn menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>
+          <span>Menu</span>
+        </summary>
+        <nav class="menu-nav" aria-label="Mobilmenu">
+        {nav.map((c) => <a href={`/${c.slug}/`} aria-current={active === c.slug ? 'page' : undefined}>{c.slug === 'handled' ? 'Håndled' : c.name}</a>)}
+        <a href="/om-os/" aria-current={active === 'om-os' ? 'page' : undefined}>Om os</a>
+        <a href="/sog/" class="search-link" aria-current={active === 'sog' ? 'page' : undefined}>
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" fill="none"></circle><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>Søg
+        </a>
+              </nav>
+      </details>
     </div>
   </header>
   <main>
