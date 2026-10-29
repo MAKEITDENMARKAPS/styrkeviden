@@ -5,7 +5,7 @@ export const categories = [
   { slug: 'handled', name: 'Håndled & wrist wraps', desc: 'Støtte i pres, bænk og overhead – uden at gøre håndleddet svagere.', intro: 'Håndleddet bærer vægten i alle presøvelser. Her kan du læse om håndledsstilling, wrist wraps og hvordan du træner, så håndleddet holder til tunge løft.' },
   { slug: 'kabeltraening', name: 'Kabeltræning', desc: 'Manchetter, øvelser og opsætning til ben, baller og ryg.', intro: 'Kabelmaskinen giver jævn modstand gennem hele bevægelsen. Her finder du øvelser med manchetter og en guide til at stille maskinen rigtigt op.' },
   { slug: 'teknik', name: 'Teknik', desc: 'Dødløft, rows, pull-ups og shrugs trin for trin.', intro: 'God teknik gør dig stærkere og mindsker risikoen for overbelastning. Her er guides til de store trækøvelser, gennemgået trin for trin.' },
-  { slug: 'skadesforebyggelse', name: 'Skadesforebyggelse', desc: 'Greb, håndled og albuer – hvad fysioterapeuterne anbefaler.', intro: 'Opvarmning, belastningsstyring og hvornår du skal søge hjælp. Guiderne her er skrevet eller gennemgået af fysioterapeuter og læger.' },
+  { slug: 'skadesforebyggelse', name: 'Skadesforebyggelse', desc: 'Greb, håndled og albuer – hvad fysioterapeuterne anbefaler.', intro: 'Opvarmning, belastningsstyring og hvornår du skal søge hjælp. Guiderne her er skrevet eller gennemgået af fysioterapeuter.' },
   { slug: 'kom-i-gang', name: 'Kom i gang', desc: 'Første program, udstyr og fejl de fleste begyndere laver.', intro: 'Ny i styrketræning? Start her med et enkelt program og et overblik over det udstyr, du faktisk har brug for.' },
 ];
 
@@ -15,7 +15,6 @@ type Member = { id: string; title: string; role: string; name?: string; photo?: 
 export const team: Member[] = [
   { id: 'fysioterapeut', title: 'Fysioterapeut', role: 'Gennemgår guides om håndled, albuer og skadesforebyggelse for faglig korrekthed.' },
   { id: 'personlig-traener', title: 'Personlig træner', role: 'Skriver guides om teknik, programmer, kabeltræning og om at komme i gang.', name: 'Mikael Munk', photo: '/fagpanel/mikael-munk.jpg', bio: 'Mikael har arbejdet som personlig træner i mere end 10 år.', disclosure: 'Mikael samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
-  { id: 'laege', title: 'Læge', role: 'Gennemgår guides, hvor smerter og skader nævnes, og vurderer hvornår man bør søge læge.' },
   { id: 'styrkeloeftraener', title: 'Styrkeløfttræner', role: 'Skriver guides om greb, løftestropper og tunge trækøvelser.' },
 ];
 
@@ -28,8 +27,8 @@ export const articles = [
   { slug: 'kabeltraening/kabelmaskine-opsaetning', cat: 'kabeltraening', title: 'Sådan stiller du kabelmaskinen op', excerpt: 'Trissehøjde, håndtag, karabinhage og placering – det, der afgør om øvelsen virker.', author: 'personlig-traener', reviewer: 'styrkeloeftraener', keywords: 'kabelmaskine trisse karabinhage håndtag opsætning' },
   { slug: 'teknik/doedloeft', cat: 'teknik', title: 'Dødløft trin for trin', excerpt: 'Opstilling, greb, træk og nedsænkning – og de fejl, der oftest stopper fremgangen.', author: 'styrkeloeftraener', reviewer: 'fysioterapeut', keywords: 'dødløft deadlift teknik ryg greb rdl sumo' },
   { slug: 'teknik/rows', cat: 'teknik', title: 'Rows: sådan træner du ryggen', excerpt: 'Fire row-varianter, hvad de træner, og hvordan du rammer ryggen frem for armene.', author: 'personlig-traener', reviewer: 'styrkeloeftraener', keywords: 'rows roning ryg kabelroning håndvægtsroning stangroning' },
-  { slug: 'skadesforebyggelse/opvarmning', cat: 'skadesforebyggelse', title: 'Opvarmning før styrketræning', excerpt: 'En enkel opvarmning i to trin, der gør kroppen klar til tunge sæt.', author: 'fysioterapeut', reviewer: 'laege', keywords: 'opvarmning skader forebyggelse mobilitet opvarmningssæt' },
-  { slug: 'skadesforebyggelse/ondt-i-albuen', cat: 'skadesforebyggelse', title: 'Ondt i albuen ved trækøvelser', excerpt: 'Hvad du kan justere i træningen, og hvornår du skal have smerterne undersøgt.', author: 'fysioterapeut', reviewer: 'laege', keywords: 'albue smerter tennisalbue golfalbue træk overbelastning' },
+  { slug: 'skadesforebyggelse/opvarmning', cat: 'skadesforebyggelse', title: 'Opvarmning før styrketræning', excerpt: 'En enkel opvarmning i to trin, der gør kroppen klar til tunge sæt.', author: 'fysioterapeut', reviewer: 'personlig-traener', keywords: 'opvarmning skader forebyggelse mobilitet opvarmningssæt' },
+  { slug: 'skadesforebyggelse/ondt-i-albuen', cat: 'skadesforebyggelse', title: 'Ondt i albuen ved trækøvelser', excerpt: 'Hvad du kan justere i træningen, og hvornår du skal have smerterne undersøgt.', author: 'fysioterapeut', reviewer: 'personlig-traener', keywords: 'albue smerter tennisalbue golfalbue træk overbelastning' },
   { slug: 'kom-i-gang/foerste-program', cat: 'kom-i-gang', title: 'Dit første styrkeprogram', excerpt: 'Et helkropsprogram til to-tre ugentlige træninger, og hvordan du gør fremskridt.', author: 'personlig-traener', reviewer: 'fysioterapeut', keywords: 'program begynder helkrop styrketræning kom i gang' },
   { slug: 'kom-i-gang/udstyr', cat: 'kom-i-gang', title: 'Det udstyr, du faktisk har brug for', excerpt: 'Hvad du skal bruge fra første dag, og hvad der først giver mening, når vægtene bliver tunge.', author: 'personlig-traener', reviewer: 'styrkeloeftraener', keywords: 'udstyr begynder sko stropper wrist wraps bælte cuffs' },
 ];
