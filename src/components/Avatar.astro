@@ -1,0 +1,7 @@
+---
+interface Props { photo?: string; name: string; size?: number; }
+const { photo, name, size = 56 } = Astro.props;
+---
+{photo
+  ? <img src={photo} alt={name} width={size} height={size} class="avatar" style={`width:${size}px;height:${size}px;object-fit:cover`} />
+  : <div class="avatar" style={`width:${size}px;height:${size}px`}></div>}

@@ -1,7 +1,8 @@
 ---
 import Base from './Base.astro';
 import Ph from '../components/Ph.astro';
-import { articleBySlug, catBySlug, memberById, articles, DATO } from '../data/site';
+import Avatar from '../components/Avatar.astro';
+import { articleBySlug, catBySlug, memberById, articles, DATO, nameOf, disclosureOf } from '../data/site';
 interface Props {
   slug: string;
   toc: { id: string; label: string }[];
@@ -21,6 +22,7 @@ const ld = {
   '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.excerpt, inLanguage: 'da-DK',
   dateModified: '2026-10-29', datePublished: '2026-10-29',
   publisher: { '@type': 'Organization', name: 'MakeIt Danmark ApS', url: 'https://www.nowmakeit.eu' },
+  ...(author.name ? { author: { '@type': 'Person', name: author.name, jobTitle: author.title, url: new URL(`/fagpanel/#${author.id}`, Astro.site).href } } : {}),
 };
 ---
 <Base title={`${a.title} – Styrkeviden`} description={a.excerpt} active={a.cat}>
@@ -34,8 +36,8 @@ const ld = {
       <h1>{a.title}</h1>
       <p class="lead">{a.excerpt}</p>
       <div class="byline">
-        <span><span class="mini"></span>Af <a href={`/fagpanel/#${author.id}`}><strong>[FAGPERSON]</strong></a>, {author.title.toLowerCase()}</span>
-        <span>Fagligt gennemgået af <a href={`/fagpanel/#${reviewer.id}`}><strong>[FAGPERSON]</strong></a>, {reviewer.title.toLowerCase()}</span>
+        <span style="display:inline-flex;align-items:center;gap:10px"><Avatar photo={author.photo} name={nameOf(author)} size={36} />Af <a href={`/fagpanel/#${author.id}`}><strong>{nameOf(author)}</strong></a>, {author.title.toLowerCase()}</span>
+        <span>Fagligt gennemgået af <a href={`/fagpanel/#${reviewer.id}`}><strong>{nameOf(reviewer)}</strong></a>, {reviewer.title.toLowerCase()}</span>
         <span>Opdateret {DATO} · <a href="#log">se ændringer</a></span>
       </div>
     </div>
@@ -63,10 +65,10 @@ const ld = {
         <p style="font-size:15px"><strong>{DATO}:</strong> Guiden er udgivet.</p>
       </section>
       <div class="author-box">
-        <div class="avatar"></div>
+        <Avatar photo={author.photo} name={nameOf(author)} size={72} />
         <div>
-          <strong style="font-family:var(--head);font-size:19px">[FAGPERSON], {author.title.toLowerCase()}</strong>
-          <span style="color:var(--muted)">{author.role} Skriver for Styrkeviden mod honorar fra MakeIt.</span>
+          <strong style="font-family:var(--head);font-size:19px">{nameOf(author)}, {author.title.toLowerCase()}</strong>
+          <span style="color:var(--muted)">{author.bio ? `${author.bio} ` : ""}{author.role} {disclosureOf(author)}</span>
           <a href={`/fagpanel/#${author.id}`} style="font-weight:600">Se fagpanelet</a>
         </div>
       </div>
@@ -79,8 +81,8 @@ const ld = {
       <div class="aside-card">
         <span class="eyebrow">Fagligt gennemgået</span>
         <div style="display:flex;gap:12px;align-items:center">
-          <div class="avatar" style="width:48px;height:48px"></div>
-          <div><a href={`/fagpanel/#${reviewer.id}`} class="person-name">[FAGPERSON]</a><span class="person-title">{reviewer.title}</span></div>
+          <Avatar photo={reviewer.photo} name={nameOf(reviewer)} size={48} />
+          <div><a href={`/fagpanel/#${reviewer.id}`} class="person-name">{nameOf(reviewer)}</a><span class="person-title">{reviewer.title}</span></div>
         </div>
         <span style="color:var(--muted);font-size:14px">Har gennemgået guiden for faglig korrekthed {DATO}.</span>
       </div>

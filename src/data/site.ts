@@ -11,9 +11,10 @@ export const categories = [
 
 export const navCats = ['greb', 'handled', 'kabeltraening', 'teknik', 'skadesforebyggelse'];
 
-export const team = [
+type Member = { id: string; title: string; role: string; name?: string; photo?: string; bio?: string; disclosure?: string };
+export const team: Member[] = [
   { id: 'fysioterapeut', title: 'Fysioterapeut', role: 'Gennemgår guides om håndled, albuer og skadesforebyggelse for faglig korrekthed.' },
-  { id: 'personlig-traener', title: 'Personlig træner', role: 'Skriver guides om teknik, programmer, kabeltræning og om at komme i gang.' },
+  { id: 'personlig-traener', title: 'Personlig træner', role: 'Skriver guides om teknik, programmer, kabeltræning og om at komme i gang.', name: 'Mikael Munk', photo: '/fagpanel/mikael-munk.jpg', bio: 'Mikael har arbejdet som personlig træner i mere end 10 år.', disclosure: 'Mikael samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
   { id: 'laege', title: 'Læge', role: 'Gennemgår guides, hvor smerter og skader nævnes, og vurderer hvornår man bør søge læge.' },
   { id: 'styrkeloeftraener', title: 'Styrkeløfttræner', role: 'Skriver guides om greb, løftestropper og tunge trækøvelser.' },
 ];
@@ -49,3 +50,6 @@ export const memberById = (id: string) => team.find((t) => t.id === id)!;
 export const articleBySlug = (s: string) => articles.find((a) => a.slug === s)!;
 export const href = (slug: string) => `/${slug}/`;
 export const articlesIn = (cat: string) => articles.filter((a) => a.cat === cat);
+
+export const nameOf = (m: Member) => m.name ?? '[FAGPERSON]';
+export const disclosureOf = (m: Member) => m.disclosure ?? 'Skriver for Styrkeviden mod honorar fra MakeIt.';

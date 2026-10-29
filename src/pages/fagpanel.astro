@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
-import { team, articles } from '../data/site';
+import Avatar from '../components/Avatar.astro';
+import { team, articles, nameOf, disclosureOf } from '../data/site';
 ---
 <Base title="Fagpanelet – Styrkeviden" description="De fagpersoner, der skriver og gennemgår guiderne på Styrkeviden.">
   <div class="wrap">
@@ -15,11 +16,12 @@ import { team, articles } from '../data/site';
         const reviewed = articles.filter((a) => a.reviewer === t.id);
         return (
           <section id={t.id} class="author-box" style="scroll-margin-top:24px">
-            <div class="avatar"></div>
+            <Avatar photo={t.photo} name={nameOf(t)} size={96} />
             <div>
-              <h2 style="margin:0;font-size:22px">[FAGPERSON]</h2>
+              <h2 style="margin:0;font-size:22px">{nameOf(t)}</h2>
               <span class="person-title" style="font-size:15px">{t.title}</span>
-              <p style="margin:4px 0 0">{t.role}</p>
+              <p style="margin:4px 0 0">{t.bio ? `${t.bio} ` : ""}{t.role}</p>
+              <p style="margin:0;font-size:14px;color:var(--muted2)">{disclosureOf(t)}</p>
               {wrote.length > 0 && (<><strong style="margin-top:8px">Har skrevet</strong><ul style="margin:0;padding-left:20px">{wrote.map((a) => <li><a href={`/${a.slug}/`}>{a.title}</a></li>)}</ul></>)}
               {reviewed.length > 0 && (<><strong style="margin-top:8px">Har gennemgået</strong><ul style="margin:0;padding-left:20px">{reviewed.map((a) => <li><a href={`/${a.slug}/`}>{a.title}</a></li>)}</ul></>)}
             </div>
