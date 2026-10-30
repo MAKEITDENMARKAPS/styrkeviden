@@ -16,6 +16,7 @@ export const team: Member[] = [
   { id: 'fysioterapeut', title: 'Fysioterapeut', role: 'Gennemgår guides om håndled, albuer og skadesforebyggelse for faglig korrekthed.' },
   { id: 'personlig-traener', title: 'Personlig træner', role: 'Skriver guides om teknik, programmer, kabeltræning og om at komme i gang.', name: 'Mikael Munk', photo: '/fagpanel/mikael-munk.jpg', bio: 'Mikael har arbejdet som personlig træner i mere end 10 år.', disclosure: 'Mikael samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
   { id: 'styrkeloeftraener', title: 'Styrkeløfttræner', role: 'Skriver guides om greb, løftestropper og tunge trækøvelser.' },
+  { id: 'crossfitter', title: 'CrossFitter', role: 'Skriver om funktionel træning, gymnastiske øvelser og greb i høj volumen.', name: 'Oliver Kjeldgaard', photo: '/fagpanel/oliver-kjeldgaard.jpg', disclosure: 'Oliver samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
   { id: 'bodybuilder', title: 'Bodybuilder', role: 'Skriver om muskelopbygning, isolationsøvelser og træning med høj volumen.' },
 ];
 
