@@ -11,11 +11,14 @@ export const categories = [
 
 export const navCats = ['greb', 'handled', 'kabeltraening', 'teknik', 'skadesforebyggelse'];
 
-type Member = { id: string; title: string; role: string; name?: string; photo?: string; bio?: string; disclosure?: string };
+type Member = { id: string; title: string; short?: string; role: string; name?: string; photo?: string; bio?: string; disclosure?: string };
 export const team: Member[] = [
-  { id: 'fysioterapeut', title: 'Fysioterapeut', role: 'Gennemgår guides om håndled, albuer og skadesforebyggelse for faglig korrekthed.' },
+  { id: 'fysioterapeut', title: 'Fysisk træner, FC Midtjylland (Superliga)', short: 'fysioterapeut og fysisk træner', role: 'Gennemgår guides om håndled, albuer og skadesforebyggelse for faglig korrekthed.', name: 'Kevin Kupermann', photo: '/fagpanel/kevin-kupermann.jpg', bio: 'Kevin er fysioterapeut og fysisk træner for FC Midtjyllands førstehold i Superligaen.', disclosure: 'Kevin samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
   { id: 'personlig-traener', title: 'Personlig træner', role: 'Skriver guides om teknik, programmer, kabeltræning og om at komme i gang.', name: 'Mikael Munk', photo: '/fagpanel/mikael-munk.jpg', bio: 'Mikael har arbejdet som personlig træner i mere end 10 år.', disclosure: 'Mikael samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
   { id: 'styrkeloeftraener', title: 'Styrkeløfttræner', role: 'Skriver guides om greb, løftestropper og tunge trækøvelser.' },
+  { id: 'crossfitter', title: 'CrossFitter', role: 'Skriver om funktionel træning, gymnastiske øvelser og greb i høj volumen.', name: 'Oliver Kjeldgaard', photo: '/fagpanel/oliver-kjeldgaard.jpg', disclosure: 'Oliver samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
+  { id: 'vanecoach', title: 'Vanecoach', role: 'Skriver om vaner, motivation og om at holde fast i træningen over tid.', name: 'Niklas Vestergaard', disclosure: 'Niklas samarbejder med MakeIt Danmark ApS, som udgiver Styrkeviden.' },
+  { id: 'bodybuilder', title: 'Bodybuilder', role: 'Skriver om muskelopbygning, isolationsøvelser og træning med høj volumen.' },
 ];
 
 export const articles = [
@@ -52,3 +55,4 @@ export const articlesIn = (cat: string) => articles.filter((a) => a.cat === cat)
 
 export const nameOf = (m: Member) => m.name ?? '[FAGPERSON]';
 export const disclosureOf = (m: Member) => m.disclosure ?? 'Skriver for Styrkeviden mod honorar fra MakeIt.';
+export const roleOf = (m: Member) => m.short ?? m.title.toLowerCase();

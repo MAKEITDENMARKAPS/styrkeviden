@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Ph from '../components/Ph.astro';
 import Avatar from '../components/Avatar.astro';
-import { categories, team, articles, newest, articleBySlug, catBySlug, memberById, articlesIn, nameOf } from '../data/site';
+import { categories, team, articles, newest, articleBySlug, catBySlug, memberById, articlesIn, nameOf, roleOf } from '../data/site';
 const guides = newest.map(articleBySlug);
 const check = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10" stroke="#51689b" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
 ---
@@ -51,7 +51,7 @@ const check = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true
             <Ph foto={g.title} />
             <span class="eyebrow">{catBySlug(g.cat).name}</span>
             <span class="guide-title">{g.title}</span>
-            <span class="guide-meta">Af {nameOf(memberById(g.author))}, {memberById(g.author).title.toLowerCase()}</span>
+            <span class="guide-meta">Af {nameOf(memberById(g.author))}, {roleOf(memberById(g.author))}</span>
           </a>
         ))}
       </div>

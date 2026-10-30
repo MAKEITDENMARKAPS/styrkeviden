@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Ph from '../../components/Ph.astro';
-import { categories, articlesIn, memberById, nameOf } from '../../data/site';
+import { categories, articlesIn, memberById, nameOf, roleOf } from '../../data/site';
 export function getStaticPaths() {
   return categories.map((c) => ({ params: { kategori: c.slug }, props: { cat: c } }));
 }
@@ -22,7 +22,7 @@ const others = categories.filter((c) => c.slug !== cat.slug);
           <Ph foto={g.title} />
           <span class="guide-title">{g.title}</span>
           <span class="card-text">{g.excerpt}</span>
-          <span class="guide-meta">Af {nameOf(memberById(g.author))}, {memberById(g.author).title.toLowerCase()}</span>
+          <span class="guide-meta">Af {nameOf(memberById(g.author))}, {roleOf(memberById(g.author))}</span>
         </a>
       ))}
     </div>

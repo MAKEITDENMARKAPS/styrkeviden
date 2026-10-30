@@ -2,7 +2,7 @@
 import Base from './Base.astro';
 import Ph from '../components/Ph.astro';
 import Avatar from '../components/Avatar.astro';
-import { articleBySlug, catBySlug, memberById, articles, DATO, nameOf, disclosureOf } from '../data/site';
+import { articleBySlug, catBySlug, memberById, articles, DATO, nameOf, disclosureOf, roleOf } from '../data/site';
 interface Props {
   slug: string;
   toc: { id: string; label: string }[];
@@ -36,8 +36,8 @@ const ld = {
       <h1>{a.title}</h1>
       <p class="lead">{a.excerpt}</p>
       <div class="byline">
-        <span style="display:inline-flex;align-items:center;gap:10px"><Avatar photo={author.photo} name={nameOf(author)} size={36} />Af <a href={`/fagpanel/#${author.id}`}><strong>{nameOf(author)}</strong></a>, {author.title.toLowerCase()}</span>
-        <span>Fagligt gennemgået af <a href={`/fagpanel/#${reviewer.id}`}><strong>{nameOf(reviewer)}</strong></a>, {reviewer.title.toLowerCase()}</span>
+        <span style="display:inline-flex;align-items:center;gap:10px"><Avatar photo={author.photo} name={nameOf(author)} size={36} />Af <a href={`/fagpanel/#${author.id}`}><strong>{nameOf(author)}</strong></a>, {roleOf(author)}</span>
+        <span>Fagligt gennemgået af <a href={`/fagpanel/#${reviewer.id}`}><strong>{nameOf(reviewer)}</strong></a>, {roleOf(reviewer)}</span>
         <span>Opdateret {DATO} · <a href="#log">se ændringer</a></span>
       </div>
     </div>
@@ -67,7 +67,7 @@ const ld = {
       <div class="author-box">
         <Avatar photo={author.photo} name={nameOf(author)} size={72} />
         <div>
-          <strong style="font-family:var(--head);font-size:19px">{nameOf(author)}, {author.title.toLowerCase()}</strong>
+          <strong style="font-family:var(--head);font-size:19px">{nameOf(author)}, {roleOf(author)}</strong>
           <span style="color:var(--muted)">{author.bio ? `${author.bio} ` : ""}{author.role} {disclosureOf(author)}</span>
           <a href={`/fagpanel/#${author.id}`} style="font-weight:600">Se fagpanelet</a>
         </div>
